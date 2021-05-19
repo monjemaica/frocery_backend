@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentResultController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShippingAddressController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,9 +30,17 @@ Route::get('/products/search/{name}', [ProductController::class, 'search']);
 
 
 // Protected Route by auth sanctum
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    //Products
     Route::post('/products', [ProductController::class, 'store']);
     Route::put('/products/{id}', [ProductController::class, 'update']);
     Route::delete('/products/{id}', [ProductController::class, 'delete']);
     Route::post('/logout', [UserController::class, 'logout']);
+
+    //Orders
+    Route::post('/shippingAddress', [ShippingAddressController::class, 'store']);
+    Route::post('/paymentResult', [PaymentResultController::class, 'store']);
+    Route::post('/orders', [OrderController::class, 'store']);
 });
