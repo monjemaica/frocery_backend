@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ShippingAddressController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +22,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/user', 'UserController');
+Route::get('/orders', [OrderController::class, 'index']);
+Route::get('/shippingAddress', [ShippingAddressController::class, 'index']);
