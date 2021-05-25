@@ -22,5 +22,15 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/seller', [App\Http\Controllers\HomeController::class, 'seller'])->name('seller');
+Route::get('/buyer', [App\Http\Controllers\HomeController::class, 'buyer'])->name('buyer');
 Route::get('/orders', [OrderController::class, 'index']);
 Route::get('/shippingAddress', [ShippingAddressController::class, 'index']);
+
+
+Route::group(['middleware' => ['auth', 'seller']], function() //Yung 'seller', registered sa Kernel.php
+{
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+});

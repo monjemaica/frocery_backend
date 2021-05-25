@@ -13,8 +13,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
-        // Email Verification
         $this->middleware(['auth', 'verified']);
     }
 
@@ -26,5 +24,15 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function seller()
+    {
+        return view('seller/dashboard');
+    }
+
+    public function buyer()
+    {
+        return view('buyer/dashboard');
     }
 }
