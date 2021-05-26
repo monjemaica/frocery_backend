@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Orders;
 use App\Models\PaymentResult;
 use App\Models\ShippingAddress;
 use App\Models\User;
@@ -108,9 +109,10 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show() //(Order $order)
     {
-        //
+        $data = Orders::all();
+        return view('seller/viewOrders', ['orders'=>$data]);
     }
 
     /**

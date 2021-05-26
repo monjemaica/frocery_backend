@@ -23,7 +23,7 @@ class SellerMiddleware
         }
         else
         {
-            return redirect('/buyer')->with('status', "You don't have permission to access Seller's Dashboard!");
+            return redirect('buyer')->with('status', "You don't have permission to access Seller's Dashboard!");
         }
     }
 }
