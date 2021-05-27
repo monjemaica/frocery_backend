@@ -94,6 +94,7 @@ class OrderController extends Controller
 
         $input = new Order();
         $input->fill($request->all());
+        $input->orderItems_id = $request->orderItems_id;
         $input->user_id = auth()->user()->id;
         $input->save();
 
