@@ -14,7 +14,7 @@ class AddUseridPaymentResultTable extends Migration
     public function up()
     {
         Schema::table('payment_results', function (Blueprint $table) {
-            $table->bigInteger('user_id')->unsigned();
+            // $table->bigInteger('user_id')->unsigned();
         });
     }
 
