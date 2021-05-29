@@ -50,7 +50,15 @@ class ProductController extends Controller
             'numReviews' => 'required'
         ]);
 
+        // Data Upload
         $product = Product::create($request->all());
+        
+        if($request->hasFile('image'))
+        {
+            $path = 'public/image';
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $path = $request->file('image')->storeAs($path, $image_name);
 
         //return response
         return response()->json($product);

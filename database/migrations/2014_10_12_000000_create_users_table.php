@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('isAdmin');
+            $table->boolean('isAdmin')->default('0'); // '0 for the Buyer and 1 for the Seller
             $table->rememberToken();
             $table->timestamps();
         });
