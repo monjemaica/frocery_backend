@@ -14,8 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return response()->json($products);
+        $product = Product::all();
+        return view('seller.index', compact('product'));
     }
 
     /**
@@ -25,8 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //route to blade
-        //return view('Post.create);
+        return view('seller.create');
     }
 
     /**
@@ -40,28 +39,33 @@ class ProductController extends Controller
         // Validation
         $request->validate([
             'name' => 'required',
-            'image' => 'required',
+            'img' => 'required',
             'brand' => 'required',
             'category' => 'required',
             'description' => 'required',
             'price' => 'required',
-            'countInStock' => 'required',
-            'rating' => 'required',
-            'numReviews' => 'required'
+            'countInStock' => 'required'
         ]);
 
-        // Data Upload
-        $product = Product::create($request->all());
-        
-        if($request->hasFile('image'))
-        {
-            $path = 'public/image';
-            $image = $request->file('image');
-            $image_name = $image->getClientOriginalName();
-            $path = $request->file('image')->storeAs($path, $image_name);
+        if($request->hasFile('img')){
+
+            $filenameWithExt = $request->file('img')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('img')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            $path = $request->file('img')->storeAs('public/image', $fileNameToStore);
+        } else{
+            $fileNameToStore = '';
+        }
+
+        // dd($request);
+        $product = new Product();
+        $product->fill($request->all());
+        $product->img = $fileNameToStore;
+        $product->save();
 
         //return response
-        return response()->json($product);
+        return redirect('/products');
     }
 
     /**
@@ -70,10 +74,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        $product = Product::find($id);
-        return response()->json($product);
+        $product = Product::find($product->id);
+        return view('seller.show', compact('product'));
     }
 
     /**
@@ -82,13 +86,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
-        //sample code
-        //$post = Post::find($id);
-        //return view('Post.edit', compact('post'));
-
-
+        $product = Product::find($id);
+        return view('seller.edit', compact('product'));
     }
 
     /**
@@ -101,11 +102,16 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        $product->update($request->all());
-        return $product;
+        $product->name = $request->name;
+        $product->brand = $request->brand;
+        $product->category = $request->category;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->countInStock = $request->countInStock;
+        $product->save();
 
         //return response
-        return response()->json($product);
+        return redirect('/products');
     }
 
     /**
@@ -116,8 +122,11 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::destroy($id);
-        return response()->json($product);
+        $product = Product::find($id);
+        $product->delete();
+
+        //return response
+        return redirect('/products');
     }
     /**
      * Search for a name
