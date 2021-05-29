@@ -19,21 +19,7 @@ class OrderController extends Controller
      */
     public function index(Request $request, Order $order, ShippingAddress $ship)
     {
-        $user = User::find(Auth::id());
-        // $order->user_id = auth()->user()->id;
-        // $order->shipAddrs_id = $user->ship()->id;
-        // dd($order);
-
-        // $users = User::all();
-        // $users_addresses = User::with('shippingAddress')->get();
-        // $users_addresses_orders = User::with(['shippingAddress', 'orders'])->get();
-        // dd($users_addresses_orders);
-
-        $user = User::find(Auth::id());
         $order->user_id = auth()->user()->id;
-        $shippingAddress = DB::table('shipping_address')->select('shipping_address.id')->where('user_id', '=', $order->user_id);
-        $order->shipAddrs_id = $user->$shippingAddress;
-        // $order->pay_id = $paymentResult->id;
         $order->paymentMethod = $request->paymentMethod;
         $order->itemsPrice = $request->itemsPrice;
         $order->shippingPrice = $request->shippingPrice;
@@ -63,7 +49,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Order $order, ShippingAddress $shippingAddress, PaymentResult $paymentResult)
+    public function store(Request $request)
     {
         // Validation
         $request->validate([
@@ -78,23 +64,8 @@ class OrderController extends Controller
             'deliveredAt' => 'required'
         ]);
 
-        // $order->user_id = auth()->user()->id;
-        // // $shippingAddress = DB::table('shipping_address')->select('shipping_address.id')->where('user_id', '=', $order->user_id);
-        // $order->paymentMethod = $request->paymentMethod;
-        // $order->itemsPrice = $request->itemsPrice;
-        // $order->shippingPrice = $request->shippingPrice;
-        // $order->taxPrice = $request->taxPrice;
-        // $order->totalPrice = $request->totalPrice;
-        // $order->isPaid = $request->isPaid;
-        // $order->paidAt = $request->paidAt;
-        // $order->isDelivered = $request->isDelivered;
-        // $order->deliveredAt = $request->deliveredAt;
-        // $order->save();
-        // dd($order);
-
         $input = new Order();
         $input->fill($request->all());
-        $input->orderItems_id = $request->orderItems_id;
         $input->user_id = auth()->user()->id;
         $input->save();
 
