@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ShippingAddressController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,7 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::resource('/products', ProductController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/seller', [App\Http\Controllers\HomeController::class, 'seller'])->name('seller');
 Route::get('/buyer', [App\Http\Controllers\HomeController::class, 'buyer'])->name('buyer');

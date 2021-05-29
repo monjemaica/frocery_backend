@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUseridPaymentResultTable extends Migration
+class AddImgProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUseridPaymentResultTable extends Migration
      */
     public function up()
     {
-        Schema::table('payment_results', function (Blueprint $table) {
-            $table->bigInteger('user_id')->unsigned();
+        Schema::table('products', function(Blueprint $table) {
+            $table->string('img')->nullable();
         });
     }
 
@@ -25,6 +25,8 @@ class AddUseridPaymentResultTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('products', function(Blueprint $table) {
+            $table->dropColumn('img');
+        });
     }
 }
