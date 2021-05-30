@@ -26,6 +26,7 @@ Route::resource('/products', ProductController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/seller', [App\Http\Controllers\HomeController::class, 'seller'])->name('seller');
+Route::get('viewOrders', [OrderController::class, 'show']);
 Route::get('/buyer', [App\Http\Controllers\HomeController::class, 'buyer'])->name('buyer');
 Route::get('/orders', [OrderController::class, 'index']);
 Route::get('/shippingAddress', [ShippingAddressController::class, 'index']);

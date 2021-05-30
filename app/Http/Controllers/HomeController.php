@@ -35,4 +35,9 @@ class HomeController extends Controller
     {
         return view('buyer/dashboard');
     }
+
+    // public function viewOrders()
+    // {
+    //     return view('seller/viewOrders');
+    // }
 }
