@@ -86,6 +86,8 @@ class OrderController extends Controller
     {
         $data = Orders::all();
         return view('seller/viewOrders', ['orders'=>$data]);
+        
+    }
 
     public function showUserOrders($user_id)
     {

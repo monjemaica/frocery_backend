@@ -30,11 +30,12 @@ Route::get('viewOrders', [OrderController::class, 'show']);
 Route::get('/buyer', [App\Http\Controllers\HomeController::class, 'buyer'])->name('buyer');
 Route::get('/orders', [OrderController::class, 'index']);
 Route::get('/shippingAddress', [ShippingAddressController::class, 'index']);
+// Route::get('/product', [ProductController::class, 'index']);
 
 
 Route::group(['middleware' => ['auth', 'seller']], function() //Yung 'seller', registered sa Kernel.php
 {
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        return view('seller.dashboard');
     });
 });
