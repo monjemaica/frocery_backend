@@ -30,7 +30,11 @@ Route::get('viewOrders', [OrderController::class, 'show']);
 Route::get('/buyer', [App\Http\Controllers\HomeController::class, 'buyer'])->name('buyer');
 Route::get('/orders', [OrderController::class, 'index']);
 Route::get('/shippingAddress', [ShippingAddressController::class, 'index']);
-// Route::get('/product', [ProductController::class, 'index']);
+
+// Test
+Route::get('/productIndex', [ProductController::class, 'index']);
+Route::get('/productCreate', [ProductController::class, 'create']);
+
 
 
 Route::group(['middleware' => ['auth', 'seller']], function() //Yung 'seller', registered sa Kernel.php
