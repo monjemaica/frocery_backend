@@ -2,9 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class AddUseridPaymentResultTable extends Migration
+class ChangeDatatypeOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +14,8 @@ class AddUseridPaymentResultTable extends Migration
      */
     public function up()
     {
-        Schema::table('payment_results', function (Blueprint $table) {
-            // $table->bigInteger('user_id')->unsigned();
-        });
+        DB::statement('ALTER TABLE orders MODIFY paidAt  DATETIME;');
+        DB::statement('ALTER TABLE orders MODIFY deliveredAt  DATETIME;');
     }
 
     /**

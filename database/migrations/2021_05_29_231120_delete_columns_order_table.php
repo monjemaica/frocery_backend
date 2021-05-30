@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUseridPaymentResultTable extends Migration
+class DeleteColumnsOrderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddUseridPaymentResultTable extends Migration
      */
     public function up()
     {
-        Schema::table('payment_results', function (Blueprint $table) {
-            // $table->bigInteger('user_id')->unsigned();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('spplr_id');
+            $table->dropColumn('shipAddrs_id');
+            $table->dropColumn('pay_id');
+            $table->dropColumn('orderItems_id');
         });
     }
 
