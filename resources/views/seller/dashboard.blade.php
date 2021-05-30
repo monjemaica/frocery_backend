@@ -1,10 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
+
+    <button class="btn btn-secondary float-right" type="button" onclick="window.location='{{ url('viewOrders') }}'">View Orders</button>
+    
+
+    <br>
+    
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+
+            <div class="card">    
                 <div class="card-header">{{ __('SELLER PAGEEEEEE') }}</div>
 
                 <div class="card-body">
