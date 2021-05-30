@@ -4,8 +4,8 @@
 
 <div class="container">
 
-    <button class="btn btn-secondary float-right" type="button" onclick="window.location='{{ url('viewOrders') }}'">View Orders</button>
-    
+    <button class="btn btn-secondary float-right" type="button" onclick="window.location='{{ url('viewOrders') }}' ">View Orders</button>
+    <button class="btn btn-secondary float-right" style="margin-right:15px;" type="button" onclick="window.location='{{ url('productIndex') }}'">Products</button>
 
     <br>
     
