@@ -66,6 +66,7 @@ class ProductController extends Controller
 
         //return response
         return redirect('/products');
+        // return redirect()->route('products.index')->with('success','Product Created successfully');
     }
 
     /**

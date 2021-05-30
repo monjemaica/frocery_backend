@@ -7,10 +7,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">       
-                <div class="card-header">New Product</div>
-                    <div class="card-body">
-
+        <div class="row">
+        <div class="col-lg-12 margin-tb" style="margin-top: 20px;">
+    <a href="{{route('products.index')}}" class="btn btn-secondary">Back</a>
+                <h2>Add New Product</h2><br><br>
+                
+        </div>
+    </div>
+    <table class="styled-table-wide">
                         <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
@@ -28,7 +32,7 @@
                             <div class="form-group row">
                                 <label for='img' class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
                                 <div class="col-md-6">
-                                    <input type="file" class="form-control-file @error('img') is-invalid @enderror" name="img" value="{{ old('img') }}" required  autofocus>
+                                    <input type="file" class="form-control-file @error('img') is-invalid @enderror"  name="img" value="{{ old('img') }}" required  autofocus>
                                 </div>
                                 @error('img')
                                     <span class="invalid-feedback" role="alert">
@@ -104,15 +108,15 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Submit') }}
+                                    <button type="submit" class="btn btn-primary float-right">
+                                        {{ __('Add Product') }}
                                     </button>
                                 </div>
                             </div>
                         </form>
 
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </div>
