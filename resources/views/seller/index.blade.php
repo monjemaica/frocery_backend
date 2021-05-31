@@ -13,10 +13,10 @@
                 </div>
             @endif
             <br> <br> <br>
+            <a href="{{route('seller')}}" class="btn btn-secondary">Back</a>
             <a class="btn btn-success float-right" href="/products/create">Create Product</a>
             <br><br>
-            <!-- <div class="card">  
-                <div class="card-body"> -->
+
                     <table class="styled-table-wide">
                         <thead>
                             <tr>
@@ -25,7 +25,6 @@
                                 <th> Image </th>
                                 <th> Brand </th>
                                 <th> Category </th>
-                                <!-- <th> Description </th> -->
                                 <th> Price </th>
                                 <th> Stock </th>
                                 <th> Date Created </th>
@@ -40,7 +39,6 @@
                                     <td> <img src="{{ asset('/storage/image/'.$products->img) }}" class= "cart-img"> </td>
                                     <td> {{ $products->brand }} </td>
                                     <td> {{ $products->category }} </td>
-                                    <!-- <td> {{ $products->description }} </td> -->
                                     <td> {{ $products->price }} </td>
                                     <td> {{ $products->countInStock }} </td>
                                     <td> {{ $products->created_at }} </td>
