@@ -80,9 +80,10 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($user_id)
     {
-        //
+        $orders = Order::where('user_id', '=', $user_id)->get();
+        return response()->json($orders);
     }
 
     /**

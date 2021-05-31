@@ -46,4 +46,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/paymentResult', [PaymentResultController::class, 'store']);
     Route::post('/orderItems', [OrderItemsController::class, 'store']);
     Route::post('/orders', [OrderController::class, 'store']);
+    Route::get('/orders/{id}', [OrderController::class, 'show']);
 });
