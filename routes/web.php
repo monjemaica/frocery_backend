@@ -31,12 +31,6 @@ Route::get('/buyer', [App\Http\Controllers\HomeController::class, 'buyer'])->nam
 Route::get('/orders', [OrderController::class, 'index']);
 Route::get('/shippingAddress', [ShippingAddressController::class, 'index']);
 
-// Test
-Route::get('/productIndex', [ProductController::class, 'index']);
-Route::get('/productCreate', [ProductController::class, 'create']);
-
-
-
 Route::group(['middleware' => ['auth', 'seller']], function() //Yung 'seller', registered sa Kernel.php
 {
     Route::get('/dashboard', function () {

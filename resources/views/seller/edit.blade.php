@@ -7,18 +7,17 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-        <div class="row">
-        <div class="col-lg-12 margin-tb" style="margin-top: 20px;">
-    <a href="{{route('products.index')}}" class="btn btn-secondary">Back</a>
-                <h2>Edit Product</h2><br><br>
-                
-        </div>
-    </div>
-                    <form method="POST" action="{{ route('products.update', $product->id) }}">
-                        @method('PATCH')
-                        @csrf
+            <div class="row">
+                <div class="col-lg-12 margin-tb" style="margin-top: 20px;">
+                    <a href="{{route('products.index')}}" class="btn btn-secondary">Back</a>
+                    <h2>Edit Product</h2><br><br>
+                </div>
+            </div>
+                <form method="POST" action="{{ route('products.update', $product->id) }}">
+                    @method('PATCH')
+                    @csrf
 
-                            <div class="form-group row">
+                        <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
                                 <div class="col-md-6">
                             <input id="name" type="text" class="form-control" name="name" @error('name') is-invalid @enderror"  placeholder="Product Name" name="name" value="{{ $product->name }}" required  autofocus>
@@ -95,7 +94,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                </form>
         </div>
     </div>
 </div>

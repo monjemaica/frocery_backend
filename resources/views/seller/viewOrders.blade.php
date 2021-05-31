@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
-    {{-- <div class="row justify-content-center">
-        <div class="col-md-8"> --}}
-            {{-- <div class="card"> --}}
-                <div class="card-header">{{ __('Orders') }}</div>
-                
-                <table class="table table-dark">
+    <div class="row justify-content-center">
+        <div class="col-md-15">
+            <a href="{{route('seller')}}" class="btn btn-secondary">Back</a>
+            <h2> Orders </h2>    
+                <table class="styled-table-wide">
                     <thead>
                       <tr>
                         <th scope="col">User ID</th>

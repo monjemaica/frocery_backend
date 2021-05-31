@@ -3915,7 +3915,7 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f8fafc;
+  background-color: #adb0b3;
   border-color: #dee2e6 #dee2e6 #f8fafc;
 }
 .nav-tabs .dropdown-menu {
@@ -3960,7 +3960,7 @@ input[type=button].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
-  background:#ADD8E6
+  background:#495057
 }
 .navbar .container,
 .navbar .container-fluid,
@@ -10079,18 +10079,58 @@ border-collapse: collapse;
 	width: 100px;
 	height: 100px;
 }
-
-/* view products */
-/* .cart__like {
-	display: grid;
-	grid-template-columns: 1.5fr 1.5fr;
-	padding: 5rem 8rem;
-  }
-   */
-
 image {
   width: 90;
   height: 50%;
   padding: rem 12rem;
   position: absolute;
+}
+
+/* dashboard */
+
+.card3 {
+  width:100vw;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('');
+  overflow: hidden;
+}
+
+.card2 {
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: 210px 210px 80px;
+  grid-template-areas: "image" "text";
+  border-radius: 18px;
+  background: white;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  font-family: roboto;
+  text-align: center;
+}
+
+.card-image2 {
+  grid-area: image;
+}
+.card-text2 {
+  grid-area: text;
+}
+
+.card-image2 {
+  grid-area: image;
+  background: url("online-grocery-delivery.jpg");
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-size: cover;
+}
+
+.card2:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.card2 {
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin:30px;
 }
